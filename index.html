@@ -19,30 +19,28 @@
   </head>
   <body>
     <!-- Opening Screen -->
-     <button id="Next" style="display: block; margin: 0 auto; margin-top: 200px; font-size: 5em; background: block; background-color: #442935; color: #ff90d6;">NEXT</button>
+     <button id="Next" style="display: block; margin: 0 auto; margin-top: 300px; font-size: 5em; background: block; background-color: #442935; color: #ff90d6;">NEXT</button>
  
     <!-- How to Play -->
-    <div id="howto" style="text-align: center; display: none;">
-      <p style="color: #442935; margin-left: 250px; margin-right: 250px; margin-top: 200px;"> Welcome to Mathplosion! </p>
-      <p style="color: #442935; margin-left: 250px; margin-right: 250px;"> The game will give you 15 seconds to answer as many problems as you can. </p>
-      <p style="color: #442935; margin-left: 250px; margin-right: 250px;"> The speed and accuracy you get will be shown at the end screen and that data will be used for research purposes. Our research requires our participants
-       to attempt the game 10 times, may we ask for you to send a SCREEN SHOT of your history of scores after 10 attempts to one of our researchers. Thank you, Have fun! </p>
+    <div id="howto" style="text-align: center;margin-top: 300px ; display: none;">
+      <p style="color: #442935; margin-left: 10%; margin-right: 10%; margin-top: 400x;"> The game will give you 15 seconds to answer as many problems as you can. </p>
+      <p style="color: #442935; margin-left: 10%; margin-right: 10%; margin-top: 400x;"> The data will be used for research purposes. May we ask for you to attempt the game 10 times and send a SCREEN SHOT of your history of scores after 10 attempts to one of our researchers </p>
 
       <button id="ready" style="display: none; margin: 0 auto; margin-top: 50px; font-size: 5em; background: block; background-color: #442935; color: #ff90d6;">READY</button>
     </div>
 
     <!-- Options Panel (for creating a game) -->
-    <div id="options" style="text-align: center; display: none;">
-      <h3 style="font-size: 3em;">Game Settings</h3>
+    <div id="options" style="text-align: center; margin-left: 10%; margin-right: 10%; display: none;">
+      <h3 style="font-size: 3em; margin-left: 10%; margin-right: 10%;">Game Settings</h3>
       <div class="option-field" style="margin-bottom: 20px;">
         <label for="playerName">Enter Your Name: </label>
-        <input type="text" id="playerName" placeholder="Player Name">
+        <input type="text" id="playerName" placeholder="Player Name" style="margin-left: 10%; margin-right: 10%;">
       </div>
-      <button id="startGame" style="color: #442935;">Start Game</button>
+      <button id="startGame" style="color: #442935; margin-left: 10%; margin-right: 10%;">Start Game</button>
     </div>
 
     <!-- Scoreboard Panel -->
-    <div id="scoreboard" style="display:none; text-align: center; margin-top: 300px;">
+    <div id="scoreboard" style="display:none; text-align: center; margin-top: 300px; margin-left: 10%; margin-right: 10%;">
       <table id="scoreTable" style="margin: 0 auto; font-size: 1em; border-spacing: 0 10px;">
         <thead>
           <tr>
@@ -54,15 +52,15 @@
         <tbody>
         </tbody>
       </table>
-      <button id="backToOptions" style="font-size: 1.2em; margin-top: 20px; color: #442935;">Back to Options</button>
+      <button id="backToOptions" style="font-size: 1.2em; margin-top: 20px; color: #442935; margin-left: 10%; margin-right: 10%;">Back to Options</button>
     </div>
 
     <!-- Game Area -->
-    <div id="game" style="display:none; text-align: center; margin-top: 250px;">
-      <p id="playerNameDisplay"></p>
-      <p class="timer">Time Left: <span id="time">15</span> seconds</p>
-      <p id="question" style="font-size: 2em;">Question:</p>
-      <input type="number" id="answerInput" placeholder="Your answer" style="font-size: 1.6em;" autofocus>
+    <div id="game" style="display:none; text-align: center; margin-top: 250px; margin-left: 10%; margin-right: 10%;">
+      <p id="playerNameDisplay" style="margin-left: 10%; margin-right: 10%;"></p>
+      <p class="timer" style="margin-left: 10%; margin-right: 10%;">Time Left: <span id="time">15</span> seconds</p>
+      <p id="question" style="font-size: 2em; margin-left: 10%; margin-right: 10%;">Question:</p>
+      <input type="number" id="answerInput" placeholder="Your answer" style="font-size: 1.6em; margin-left: 10%; margin-right: 10%;" autofocus>
     <script>
       document.addEventListener("DOMContentLoaded", function() {
         const gameArea = document.getElementById("game");
@@ -90,11 +88,11 @@
     <div id="endGamePanel" style="display:none">
       <div>
       </div>
-      <p>Your Final Score: <span id="finalScore">0</span></p>
-      <p>Total Questions: <span id="totalQuestions"></span></p>
-      <p>Your Accuracy: <span id="finalAccuracy">0%</span></p>
-      <p>Average Time per Question: <span id="averageTime">0</span> seconds</p>
-      <button id="restartGame" style ="color: #442935;">Restart Game</button>
+      <p>Your Final Score: <span id="finalScore" style="margin-left: 10%; margin-right: 10%;">0</span></p>
+      <p>Total Questions: <span id="totalQuestions" style="margin-left: 10%; margin-right: 10%;"></span></p>
+      <p>Your Accuracy: <span id="finalAccuracy" style="margin-left: 10%; margin-right: 10%;">0%</span></p>
+      <p>Average Time per Question: <span id="averageTime" style="margin-left: 10%; margin-right: 10%;">0</span> seconds</p>
+      <button id="restartGame" style ="color: #442935; margin-left: 10%; margin-right: 10%;">Restart Game</button>
     </div>
 
     <script>
