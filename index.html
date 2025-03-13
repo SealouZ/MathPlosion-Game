@@ -19,14 +19,15 @@
   </head>
   <body>
     <!-- Opening Screen -->
-     <button id="Next" style="display: block; margin: 0 auto; margin-top: 300px; font-size: 5em; background: block; background-color: #442935; color: #ff90d6;">NEXT</button>
+     <button id="Next" style="display: block; margin: 0 auto; margin-top: 300px; font-size: 5em; background: block; background-color: #442935; color: #ff90d6;">START</button>
  
     <!-- How to Play -->
-    <div id="howto" style="text-align: center;margin-top: 300px ; display: none;">
-      <p style="color: #442935; margin-left: 10%; margin-right: 10%; margin-top: 400x;"> The game will give you 15 seconds to answer as many problems as you can. </p>
-      <p style="color: #442935; margin-left: 10%; margin-right: 10%; margin-top: 400x;"> The data will be used for research purposes. May we ask for you to attempt the game 10 times and send a SCREEN SHOT of your history of scores after 10 attempts to one of our researchers </p>
-
-      <button id="ready" style="display: none; margin: 0 auto; margin-top: 50px; font-size: 5em; background: block; background-color: #442935; color: #ff90d6;">READY</button>
+    <div id="howto" style="text-align: center; margin-top: 100px; display: none;">
+      <p style="color: #442935; margin-left: 20%; margin-right: 20%;"> Welcome to Mathplosion!</p>
+      <p style="color: #442935; margin-left: 20%; margin-right: 20%;"> You are tasked to answer Linear Equations and find the value of x such as:</p>
+      <p style="color: #442935; font-size: 1.6em"> 2x + 4 = 2</p>
+      <p style="color: #442935; margin-left: 20%; margin-right: 20%;"> You will be given 15 seconds to answer as much as you can. Good luck and Have fun!</p>
+      <button id="ready" style="display: none; margin: 0 auto; margin-top: 50px; font-size: 4em; background: block; background-color: #442935; color: #ff90d6;">READY</button>
     </div>
 
     <!-- Options Panel (for creating a game) -->
@@ -36,11 +37,11 @@
         <label for="playerName">Enter Your Name: </label>
         <input type="text" id="playerName" placeholder="Player Name" style="margin-left: 10%; margin-right: 10%;">
       </div>
-      <button id="startGame" style="color: #442935; margin-left: 10%; margin-right: 10%;">Start Game</button>
+      <button id="startGame" style="color: #442935; margin-right: 10%;">Start Game</button>
     </div>
 
-    <!-- Scoreboard Panel -->
-    <div id="scoreboard" style="display:none; text-align: center; margin-top: 300px; margin-left: 10%; margin-right: 10%;">
+    <!-- History Panel -->
+    <div id="history" style="display:none; text-align: center; margin-top: 300px; margin-left: 10%; margin-right: 10%;">
       <table id="scoreTable" style="margin: 0 auto; font-size: 1em; border-spacing: 0 10px;">
         <thead>
           <tr>
@@ -59,8 +60,9 @@
     <div id="game" style="display:none; text-align: center; margin-top: 250px; margin-left: 10%; margin-right: 10%;">
       <p id="playerNameDisplay" style="margin-left: 10%; margin-right: 10%;"></p>
       <p class="timer" style="margin-left: 10%; margin-right: 10%;">Time Left: <span id="time">15</span> seconds</p>
-      <p id="question" style="font-size: 2em; margin-left: 10%; margin-right: 10%;">Question:</p>
-      <input type="number" id="answerInput" placeholder="Your answer" style="font-size: 1.6em; margin-left: 10%; margin-right: 10%;" autofocus>
+      <p style="font-size: 1.6em"> Find x</p>
+      <p id="question" style="font-size: 1.8em; margin-left: 10%; margin-right: 10%;">Question:</p>
+      <input type="number" id="answerInput" placeholder="Your answer" style="font-size: 1.6em; text-align: center;" autofocus>
     <script>
       document.addEventListener("DOMContentLoaded", function() {
         const gameArea = document.getElementById("game");
@@ -133,10 +135,10 @@
 
   if (useSubtraction) {
     c = a * x - b;
-    question = `${a}x - ${b} = ${c}`;
+    question = `${a === 1 ? '' : a}x - ${b} = ${c}`;
   } else {
     c = a * x + b;
-    question = `${a}x + ${b} = ${c}`;
+    question = `${a === 1 ? '' : a}x + ${b} = ${c}`;
   }
 
   const answer = x;
@@ -324,24 +326,24 @@
         });
       });;
 
-      // Function to show the scoreboard
-        function showScoreboard() {;
+      // Function to show the history
+        function showhistory() {;
           document.getElementById("options").style.display = "none";
-          document.getElementById("scoreboard").style.display = "block";
+          document.getElementById("history").style.display = "block";
       }
 
       // Event listener for back to options button
        document.getElementById("backToOptions").addEventListener("click", () => {
-        document.getElementById("scoreboard").style.display = "none";
+        document.getElementById("history").style.display = "none";
         document.getElementById("options").style.display = "block";
       });
 
-      // Add a button to view the scoreboard in the options panel
+      // Add a button to view the history in the options panel
        const viewScoresButton = document.createElement("button");
         viewScoresButton.textContent = "View History";
         viewScoresButton.style.color = "#442935";
         viewScoresButton.style.fontSize = "1.6em";
-        viewScoresButton.addEventListener("click", showScoreboard);
+        viewScoresButton.addEventListener("click", showhistory);
         document.getElementById("options").appendChild(viewScoresButton);
     </script>
   </body>
