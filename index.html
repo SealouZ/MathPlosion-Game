@@ -125,9 +125,9 @@
 
     // Function to generate a random algebraic question with whole number solutions
     function generateQuestion() {
-      let a = Math.floor(Math.random() * (difficultyLevel * 1.5)) + 1; // Gradually increase the coefficient range
-       let x = Math.floor(Math.random() * (difficultyLevel * 1.5)) + 1; // Gradually increase the range of x
-       let b = Math.floor(Math.random() * (difficultyLevel * 1.5)) + 1; // Gradually increase the coefficient range
+      let a = Math.floor(Math.random() * (difficultyLevel * 2)) + 1; // Gradually increase the coefficient range
+       let x = Math.floor(Math.random() * (difficultyLevel * 2)) + 1; // Gradually increase the range of x
+       let b = Math.floor(Math.random() * (difficultyLevel * 2)) + 1; // Gradually increase the coefficient range
 
   let useSubtraction = Math.random() < 0.5; // Randomly decide between addition and subtraction
   let c;
