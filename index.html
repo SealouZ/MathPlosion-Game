@@ -26,7 +26,7 @@
       <p style="color: #442935; margin-left: 20%; margin-right: 20%;"> Welcome to Mathplosion!</p>
       <p style="color: #442935; margin-left: 20%; margin-right: 20%;"> You are tasked to answer Linear Equations and find the value of x such as:</p>
       <p style="color: #442935; font-size: 1.6em"> 2x + 4 = 2</p>
-      <p style="color: #442935; margin-left: 20%; margin-right: 20%;"> You will be given 15 seconds to answer as much as you can. Good luck and Have fun!</p>
+      <p style="color: #442935; margin-left: 20%; margin-right: 20%;"> You will be given 60 seconds to answer as much as you can. Good luck and Have fun!</p>
       <button id="ready" style="display: none; margin: 0 auto; margin-top: 50px; font-size: 4em; background: block; background-color: #442935; color: #ff90d6;">READY</button>
     </div>
 
@@ -59,7 +59,7 @@
     <!-- Game Area -->
     <div id="game" style="display:none; text-align: center; margin-top: 250px; margin-left: 10%; margin-right: 10%;">
       <p id="playerNameDisplay" style="margin-left: 10%; margin-right: 10%;"></p>
-      <p class="timer" style="margin-left: 10%; margin-right: 10%;">Time Left: <span id="time">15</span> seconds</p>
+      <p class="timer" style="margin-left: 10%; margin-right: 10%;">Time Left: <span id="time">60</span> seconds</p>
       <p style="font-size: 1.6em"> Find x</p>
       <p id="question" style="font-size: 1.8em; margin-left: 10%; margin-right: 10%;">Question:</p>
       <input type="number" id="answerInput" placeholder="Your answer" style="font-size: 1.6em; text-align: center;" autofocus>
@@ -93,7 +93,7 @@
       <p>Your Final Score: <span id="finalScore" style="margin-left: 10%; margin-right: 10%;">0</span></p>
       <p>Total Questions: <span id="totalQuestions" style="margin-left: 10%; margin-right: 10%;"></span></p>
       <p>Your Accuracy: <span id="finalAccuracy" style="margin-left: 10%; margin-right: 10%;">0%</span></p>
-      <p>Average Time per Question: <span id="averageTime" style="margin-left: 10%; margin-right: 10%;">0</span> seconds</p>
+      <p>Average  per Question: <span id="average" style="margin-left: 10%; margin-right: 10%;">0</span> seconds</p>
       <button id="restartGame" style ="color: #442935; margin-left: 10%; margin-right: 10%;">Restart Game</button>
     </div>
 
@@ -104,7 +104,7 @@
       let correctAnswers = 0;
       let totalCorrectAnswers = 0;
       let totalQuestions = 0;
-      let timeLeft = 15;
+      let timeLeft = 60;
       let timer;
       let currentQuestion;
       let difficultyLevel = 1;
@@ -156,7 +156,7 @@
 
       // Function to update the average time per question
       function updateAverageTime() {
-        const averageTime = (15) / (totalQuestions);
+        const averageTime = (60) / (totalQuestions);
         document.getElementById("averageTime").textContent = `${averageTime.toFixed(2)} `;
       }
 
@@ -218,7 +218,7 @@
 
 
         // Set the timer based on input
-        timeLeft = 15;
+        timeLeft = 60;
         document.getElementById("playerNameDisplay").textContent = `Welcome, ${currentPlayer.name}!`;
         document.getElementById("options").style.display = "none";
         document.getElementById("game").style.display = "block";
@@ -269,7 +269,7 @@
         correctAnswers = 0;
         totalCorrectAnswers = 0;
         totalQuestions = 0;
-        timeLeft = 15;
+        timeLeft = 60;
         difficultyLevel = 1;
         startGame();
       });
@@ -310,7 +310,7 @@
           const rowCount = scoreTableBody.rows.length; // This line counts the number of rows
       
           accuracyCell.textContent = `${((totalCorrectAnswers / (totalQuestions - 1)) * 100).toFixed(2)}%`;
-          averageTimeCell.textContent = `${((15) / (totalQuestions)).toFixed(2)} seconds`;
+          averageTimeCell.textContent = `${((60) / (totalQuestions)).toFixed(2)} seconds`;
           attemptsCell.textContent = attempts;
 
           row.appendChild(attemptsCell);
