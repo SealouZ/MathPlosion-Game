@@ -22,13 +22,14 @@
      <button id="Next" style="display: block; margin: 0 auto; margin-top: 300px; font-size: 5em; background: block; background-color: #442935; color: #ff90d6;">START</button>
  
     <!-- How to Play -->
-    <div id="howto" style="text-align: center; margin-top: 150px; display: none;">
+    <div id="howto" style="text-align: center; margin-top: 100px; display: none;">
       <p style="color: #442935; margin-left: 20%; margin-right: 20%;"> Welcome to Mathplosion!</p>
       <p style="color: #442935; margin-left: 20%; margin-right: 20%;"> You are tasked to answer Linear Equations and find the value of x such as:</p>
       <p style="color: #442935; font-size: 1.6em"> 2x + 4 = 2</p>
       <p style="color: #442935; margin-left: 20%; margin-right: 20%;"> You will be given 60 seconds to answer as much as you can. Good luck and Have fun!</p>
       <button id="ready" style="display: none; margin: 0 auto; margin-top: 50px; font-size: 4em; background: block; background-color: #442935; color: #ff90d6;">READY</button>
     </div>
+
 
     <!-- Options Panel (for creating a game) -->
     <div id="options" style="text-align: center; margin-left: 10%; margin-right: 10%; display: none;">
@@ -39,6 +40,7 @@
       </div>
       <button id="startGame" style="color: #442935; margin-right: 10%;">Start Game</button>
     </div>
+
 
     <!-- History Panel -->
     <div id="history" style="display:none; text-align: center; margin-top: 300px; margin-left: 10%; margin-right: 10%;">
@@ -56,6 +58,7 @@
       <button id="backToOptions" style="font-size: 1.2em; margin-top: 20px; color: #442935; margin-left: 10%; margin-right: 10%;">Back to Options</button>
     </div>
 
+
     <!-- Game Area -->
     <div id="game" style="display:none; text-align: center; margin-top: 250px; margin-left: 10%; margin-right: 10%;">
       <p id="playerNameDisplay" style="margin-left: 10%; margin-right: 10%;"></p>
@@ -68,6 +71,7 @@
         const gameArea = document.getElementById("game");
         const inputField = document.getElementById("answerInput");
 
+
         const observer = new MutationObserver(function(mutations) {
           mutations.forEach(function(mutation) {
             if (mutation.attributeName === "style" && gameArea.style.display === "block") {
@@ -75,6 +79,7 @@
             }
           });
         });
+
 
         observer.observe(gameArea, { attributes: true });
       });
@@ -86,6 +91,7 @@
       <p class="accuracy" id="accuracy">Accuracy: 0%</p>
     </div>
 
+
     <!-- End Game Panel -->
     <div id="endGamePanel" style="display:none">
       <div>
@@ -93,9 +99,10 @@
       <p>Your Final Score: <span id="finalScore" style="margin-left: 10%; margin-right: 10%;">0</span></p>
       <p>Total Questions: <span id="totalQuestions" style="margin-left: 10%; margin-right: 10%;"></span></p>
       <p>Your Accuracy: <span id="finalAccuracy" style="margin-left: 10%; margin-right: 10%;">0%</span></p>
-      <p>Average  per Question: <span id="average" style="margin-left: 10%; margin-right: 10%;">0</span> seconds</p>
+      <p>Average Time per Question: <span id="averageTime" style="margin-left: 10%; margin-right: 10%;">0</span> seconds</p>
       <button id="restartGame" style ="color: #442935; margin-left: 10%; margin-right: 10%;">Restart Game</button>
     </div>
+
 
     <script>
       let players = [];
@@ -110,11 +117,13 @@
       let difficultyLevel = 1;
       let attempts = 0
 
+
       // Function to start the timer (only once at the beginning)
       function startTimer() {
         timer = setInterval(() => {
           timeLeft--;
           document.getElementById("time").textContent = timeLeft;
+
 
           if (timeLeft === 0) {
             clearInterval(timer);
@@ -123,15 +132,18 @@
         }, 1000);
       }
 
+
     // Function to generate a random algebraic question with whole number solutions
     function generateQuestion() {
       let a = Math.floor(Math.random() * (difficultyLevel * 2)) + 1; // Gradually increase the coefficient range
        let x = Math.floor(Math.random() * (difficultyLevel * 2)) + 1; // Gradually increase the range of x
        let b = Math.floor(Math.random() * (difficultyLevel * 2)) + 1; // Gradually increase the coefficient range
 
+
   let useSubtraction = Math.random() < 0.5; // Randomly decide between addition and subtraction
   let c;
   let question;
+
 
   if (useSubtraction) {
     c = a * x - b;
@@ -141,9 +153,11 @@
     question = `${a === 1 ? '' : a}x + ${b} = ${c}`;
   }
 
+
   const answer = x;
   return { question, answer };
 }
+
 
       // Function to update the accuracy
       function updateAccuracy() {
@@ -154,15 +168,18 @@
       document.getElementById("accuracy").textContent = `Accuracy: ${accuracy.toFixed(2)}%`;
       }
 
+
       // Function to update the average time per question
       function updateAverageTime() {
         const averageTime = (60) / (totalQuestions);
         document.getElementById("averageTime").textContent = `${averageTime.toFixed(2)} `;
       }
 
+
       // Update the average time per question after each question
       function nextQuestion() {
         totalQuestions++;
+
 
         // Gradually increase difficulty based on correct answers
         if (correctAnswers >= 5) {
@@ -170,9 +187,11 @@
           correctAnswers = 0; // Reset the correct answers counter after increasing difficulty
         }
 
+
         currentQuestion = generateQuestion();
         document.getElementById("question").textContent = `${currentQuestion.question}`;
         document.getElementById("answerInput").value = "";
+
 
         updateAverageTime(); // Update average time after generating the next question
       }
@@ -183,8 +202,10 @@
         document.getElementById("ready").style.display = "block";
       }
 
+
       // Event listener for next button to show howto panel
       document.getElementById("Next").addEventListener("click", showHowToPanel);
+
 
       // Event listener for ready button to show options panel
       document.getElementById("ready").addEventListener("click", showOptionsPanel);
@@ -195,14 +216,17 @@
         document.getElementById("options").style.display = "block";
       }
 
+
       // Function to show the options panel from the howto panel
       function showOptionsPanelFromHowto() {
         document.getElementById("howto").style.display = "none";
         document.getElementById("options").style.display = "block";
       }
 
+
       // Event listener for ready button to show options panel from howto
       document.getElementById("ready").addEventListener("click", showOptionsPanelFromHowto);
+
 
       // Event listener for next button
       document.getElementById("Next").addEventListener("click", showOptionsPanel);
@@ -212,9 +236,12 @@
         const playerName = document.getElementById("playerName").value || "Player";
         attempts++;
 
+
           // Join the existing game (simulation for now)
           currentPlayer = { name: playerName, score: 0 };
           players.push(currentPlayer);
+
+
 
 
         // Set the timer based on input
@@ -228,20 +255,24 @@
         updateAverageTime(); // Update average time after generating the next question;
       }
 
+
       // Function to generate the next question
       function nextQuestion() {
         totalQuestions++;
 
+
         // Gradually increase difficulty based on correct answers
-        if (correctAnswers >= 3) {
+        if (correctAnswers >= 5) {
           difficultyLevel++; // Increase difficulty gradually
           correctAnswers = 0; // Reset the correct answers counter after increasing difficulty
         }
+
 
         currentQuestion = generateQuestion();
         document.getElementById("question").textContent = `${currentQuestion.question}`;
         document.getElementById("answerInput").value = "";
       }
+
 
       // Function to handle submit action
       function handleSubmit() {
@@ -256,11 +287,13 @@
           document.getElementById("message").textContent = `Wrong! The correct answer was ${currentQuestion.answer}.`;
         }
 
+
         document.getElementById("score").textContent = `Score: ${score}`;
         updateAccuracy();
         nextQuestion();
         updateAverageTime(); // Update average time after generating the next question
       }
+
 
       // Event listener for start game button
       document.getElementById("startGame").addEventListener("click", function() {        
@@ -274,6 +307,7 @@
         startGame();
       });
 
+
       // Event listener for enter key to submit answer
       document.getElementById("answerInput").addEventListener("keydown", function(event) {
         if (event.key === "Enter") {
@@ -282,8 +316,10 @@
         }
       });
 
+
       // Event listener for submit button
       document.getElementById("submit").addEventListener("click", handleSubmit);
+
 
       // Function to show the end game screen
       function showEndGame() {
@@ -295,6 +331,7 @@
         document.getElementById("endGamePanel").style.display = "block";
       }
 
+
       // Restart game
       document.getElementById("restartGame").addEventListener("click", () => {
         document.getElementById("accuracy").textContent = `Accuracy: 0%`;
@@ -302,16 +339,18 @@
         document.getElementById("options").style.display = "block";
         const scoreTableBody = document.getElementById("scoreTable").querySelector("tbody");
 
+
         players.forEach(player => {
           const row = document.createElement("tr");
           const attemptsCell = document.createElement("td");
           const accuracyCell = document.createElement("td");
           const averageTimeCell = document.createElement("td");
           const rowCount = scoreTableBody.rows.length; // This line counts the number of rows
-      
+     
           accuracyCell.textContent = `${((totalCorrectAnswers / (totalQuestions - 1)) * 100).toFixed(2)}%`;
           averageTimeCell.textContent = `${((60) / (totalQuestions)).toFixed(2)} seconds`;
           attemptsCell.textContent = attempts;
+
 
           row.appendChild(attemptsCell);
           row.appendChild(accuracyCell);
@@ -326,17 +365,20 @@
         });
       });;
 
+
       // Function to show the history
         function showhistory() {;
           document.getElementById("options").style.display = "none";
           document.getElementById("history").style.display = "block";
       }
 
+
       // Event listener for back to options button
        document.getElementById("backToOptions").addEventListener("click", () => {
         document.getElementById("history").style.display = "none";
         document.getElementById("options").style.display = "block";
       });
+
 
       // Add a button to view the history in the options panel
        const viewScoresButton = document.createElement("button");
@@ -348,3 +390,4 @@
     </script>
   </body>
 </html>
+
